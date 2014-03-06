@@ -8,6 +8,7 @@ package Controleur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -74,6 +75,11 @@ public class MainController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        request.setAttribute("nombre1", 9);
+        request.setAttribute("nombre2", 0.99);
+        
+        getServletContext().getRequestDispatcher("../web/addition.jsp").forward(request, response);
     }
 
     /**
