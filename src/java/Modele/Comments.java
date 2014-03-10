@@ -10,6 +10,6 @@ package Modele;
  *
  * @author alainlesage
  */
-public class LesDonnees {
+public class Comments {
     
 }
