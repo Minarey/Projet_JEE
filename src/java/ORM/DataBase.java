@@ -33,7 +33,15 @@ public class DataBase {
     
     private ResultSet resultat = null;
     
-    public DataBase(){
+    private static DataBase instance = null;
+    
+    public static DataBase getInstance() {
+        if (instance == null)
+            instance = new DataBase();
+        return instance;
+    }
+    
+    private DataBase(){
         importDriver();
         connect();
     }
