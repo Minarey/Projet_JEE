@@ -9,7 +9,9 @@ package ORM;
 import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -24,6 +26,12 @@ public class DataBase {
     private String password = "lenfant";
     
     private Connection connexion = null;
+    
+    private String query = null;
+    
+    private Statement statement = null;
+    
+    private ResultSet resultat = null;
     
     public DataBase(){
         importDriver();
