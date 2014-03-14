@@ -48,8 +48,22 @@ public class Factory {
         return articleList;
     }
     
-    public static ArrayList<Comment> getCommentList()
+    public static ArrayList<Comment> getCommentList(int articleID)
     {
-      return new ArrayList<>();
+      ArrayList<Comment> commentList = new ArrayList<>(); 
+        try {
+            result = DataBase.getInstance().getCommentList(articleID);
+            while (result.next())
+            {
+                Comment comment = new Comment(  result.getInt("CommentID"),
+                                                result.getString("Author"),
+                                                result.getString("content"),
+                                                result.getInt("newsID"));
+                commentList.add(comment);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Factory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return commentList;
     }
 }
