@@ -25,7 +25,21 @@ public class Factory {
     
     public static ArrayList<User> getUserList()
     {
-      return new ArrayList<>();
+      ArrayList<User> userList = new ArrayList<>(); 
+        try {
+            result = DataBase.getInstance().getUserList();
+            while (result.next())
+            {
+                User user = new User(  result.getInt("userID"),
+                                       result.getString("pseudo"),
+                                       result.getString("email"),
+                                       result.getString("password"));
+                userList.add(user);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Factory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return userList;
     }
     
     public static ArrayList<Article> getArticleList()
