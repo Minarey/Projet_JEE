@@ -105,7 +105,7 @@ public class DataBase {
     public ResultSet getCommentList(int commentID)
     {
         try {
-            statement = connection.prepareStatement("SELECT * FROM Comment WHERE newsID = " + articleID + ";");
+            statement = connection.prepareStatement("SELECT * FROM Comment WHERE commentID = " + commentID + ";");
             result = statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,8 +175,7 @@ public class DataBase {
     public ResultSet addComment(Comment comment)
     {
         try {
-            statement = connection.prepareStatement("INSERT INTO Article VALUES(" + comment.getPubDate() +","
-                                                                                  + comment.getAuthor() +","
+            statement = connection.prepareStatement("INSERT INTO Article VALUES(" + comment.getAuthor() +","
                                                                                   + comment.getArticleID()+","
                                                                                   + comment.getContent()+");"
                                                     );
