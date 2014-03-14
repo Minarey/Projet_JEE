@@ -48,4 +48,20 @@ public class User {
     private void setPassword(String password) {
         this.password = password;
     }
+    
+    public Integer getUserID() {
+        return userID;
+    }
+     
+    private String getPseudo() {
+        return pseudo; 
+    }
+
+    private String getEmail() {
+        return email;
+    }
+
+    private String getPassword() {
+        return password;
+    }
 }

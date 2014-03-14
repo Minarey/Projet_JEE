@@ -6,12 +6,16 @@
 
 package ORM;
 
+import POJOs.Article;
+import POJOs.Comment;
 import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -25,13 +29,13 @@ public class DataBase {
     
     private String password = "lenfant";
     
-    private Connection connexion = null;
+    private Connection connection = null;
     
     private String query = null;
     
-    private Statement statement = null;
+    private PreparedStatement statement = null;
     
-    private ResultSet resultat = null;
+    private ResultSet result = null;
     
     private static DataBase instance = null;
     
@@ -66,14 +70,14 @@ public class DataBase {
         /* Connexion à la base de données */
             
             try {
-                connexion = DriverManager.getConnection( url, user, password );
+                connection = DriverManager.getConnection( url, user, password );
 
                 out.println("Connection established for user " + user);
 
             } catch ( SQLException e ) {
                 out.println("Connection denied" + " " + e.getMessage() + " " + e.getSQLState());
             } finally {
-                if ( connexion != null )
+                if ( connection != null )
                     disconnect();
             }
     }
@@ -81,9 +85,105 @@ public class DataBase {
     private void disconnect() {
         try {
             /* Fermeture de la connexion */
-            connexion.close();
+            connection.close();
         } catch ( SQLException ignore ) {
             /* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
         }
+    }
+    
+    public ResultSet getArticleList()
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM Article;");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet getCommentList(int commentID)
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM Comment WHERE newsID = " + articleID + ";");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet getUserList()
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM User;");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet getArticleByID(int articleID)
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM Article WHERE article ID  = " + articleID + ";");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet getCommentByID(int commentID)
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM Comment WHERE newsID = " + commentID + ";");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet getUserByID(int userID)
+    {
+        try {
+            statement = connection.prepareStatement("SELECT * FROM User WHERE userID = " + userID + ";");
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet addArticle(Article article)
+    {
+        try {
+            statement = connection.prepareStatement("INSERT INTO Article VALUES(" + article.getPubDate() +","
+                                                                                  + article.getTitle() +","
+                                                                                  + article.getContent()+","
+                                                                                  + article.getAuthorID()+");"
+                                                    );
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+    
+    public ResultSet addComment(Comment comment)
+    {
+        try {
+            statement = connection.prepareStatement("INSERT INTO Article VALUES(" + comment.getPubDate() +","
+                                                                                  + comment.getAuthor() +","
+                                                                                  + comment.getArticleID()+","
+                                                                                  + comment.getContent()+");"
+                                                    );
+            result = statement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
     }
 }

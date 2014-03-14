@@ -10,7 +10,10 @@ import POJOs.Article;
 import POJOs.Comment;
 import POJOs.User;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,18 +21,35 @@ import java.util.ArrayList;
  */
 public class Factory {
     
-    public static ArrayList<User> UserList(ResultSet result)
+    private static ResultSet result = null;
+    
+    public static ArrayList<User> getUserList()
     {
-      return new ArrayList<User>();
+      return new ArrayList<>();
     }
     
-    public static ArrayList<Article> ArticleList(ResultSet result)
+    public static ArrayList<Article> getArticleList()
     {
-      return new ArrayList<Article>();
+        ArrayList<Article> articleList = new ArrayList<>(); 
+        try {
+            result = DataBase.getInstance().getArticleList();
+            while (result.next())
+            {
+                Article article = new Article(  result.getInt("ArticleID"),
+                                                result.getDate("pubDate"),
+                                                result.getString("title"),
+                                                result.getString("content"),
+                                                result.getInt("authorID"));
+                articleList.add(article);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Factory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return articleList;
     }
     
-    public static ArrayList<Comment> CommentList(ResultSet result)
+    public static ArrayList<Comment> getCommentList()
     {
-      return new ArrayList<Comment>();
+      return new ArrayList<>();
     }
 }

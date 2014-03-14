@@ -24,7 +24,7 @@ public class Article {
     
     private Integer authorID = null; 
     
-    Article(Date pubDate, String title, String content, Integer authorID)
+    public Article(Date pubDate, String title, String content, Integer authorID)
     {
         setPubDate(pubDate);
         setTitle(title);
@@ -32,7 +32,7 @@ public class Article {
         setAuthorID(authorID);
     }
     
-    Article(Integer articleID, Date pubDate, String title, String content, Integer authorID)
+    public Article(Integer articleID, Date pubDate, String title, String content, Integer authorID)
     {
         this(pubDate, title, content, authorID);
         setArticleID(articleID);
@@ -56,5 +56,25 @@ public class Article {
 
     private void setAuthorID(Integer authorID) {
         this.authorID = authorID;
+    }
+    
+    public Integer getArticleID() {
+        return articleID;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public String getTitle() {
+         return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Integer getAuthorID() {
+        return authorID;
     }
 }

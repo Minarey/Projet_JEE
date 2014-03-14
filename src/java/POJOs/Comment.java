@@ -48,4 +48,20 @@ public class Comment {
     private void setArticleID(Integer articleID) {
         this.articleID = articleID;
     }
+    
+    public Integer getCommentID() {
+        return commentID;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Integer getArticleID() {
+        return articleID;
+    }
 }

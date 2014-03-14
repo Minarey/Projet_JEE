@@ -6,10 +6,20 @@
 
 package Modele;
 
+import ORM.Factory;
+import POJOs.Article;
+import java.util.ArrayList;
+
 /**
  *
  * @author alainlesage
  */
 public class Articles {
     
+    private static ArrayList<Article> articles = null;
+    
+    public Articles()
+    {
+        articles = Factory.getArticleList();
+    }
 }
