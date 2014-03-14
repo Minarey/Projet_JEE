@@ -22,4 +22,9 @@ public class Articles {
     {
         articles = Factory.getArticleList();
     }
+    
+    public ArrayList<Article> getArticles()
+    {
+        return articles;
+    }
 }
