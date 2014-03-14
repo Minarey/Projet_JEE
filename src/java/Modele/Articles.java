@@ -23,7 +23,7 @@ public class Articles {
         articles = Factory.getArticleList();
     }
     
-    public ArrayList<Article> getArticles()
+    public static ArrayList<Article> getArticles()
     {
         return articles;
     }
