@@ -23,11 +23,11 @@ import java.util.logging.Logger;
  */
 public class DataBase {
     
-    private String url = "jdbc:mysql://localhost:3306/projet_web_jee";
+    private final String url = "jdbc:mysql://localhost:3306/projet_web_jee";
     
-    private String user = "admin";
+    private final String user = "admin";
     
-    private String password = "lenfant";
+    private final String password = "lenfant";
     
     private Connection connection = null;
     
@@ -94,7 +94,7 @@ public class DataBase {
     public ResultSet getArticleList()
     {
         try {
-            statement = connection.prepareStatement("SELECT * FROM Article;");
+            statement = connection.prepareStatement("SELECT * FROM Article");
             result = statement.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
