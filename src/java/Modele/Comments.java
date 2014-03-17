@@ -15,16 +15,24 @@ import java.util.ArrayList;
  * @author alainlesage
  */
 public class Comments {
+     
+    private ArrayList<Comment> comments = null;
     
-    private static ArrayList<Comment> comments = null;
+    private static Comments instance;
     
-    public Comments(int articleID)
+    private Comments()
     {
-        comments = Factory.getCommentList(articleID);
     }
     
-    public static ArrayList<Comment> getComments()
+    public static Comments getInstance() 
     {
-        return comments;
+        if (instance == null)
+            instance = new Comments();
+        return instance;
+    }
+    
+    public ArrayList<Comment> getComments(int articleID)
+    {
+        return Factory.getCommentList(articleID);
     }
 }
