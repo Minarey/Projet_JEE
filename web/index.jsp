@@ -17,6 +17,9 @@
     <body>
         <%@ include file="header.jsp" %>
         <div>
+            ${variable} <br />
+            ${articles.article1} <br />
+            ${articles.article5} <br />
             <%@ include file="article.jsp" %>
         </div>
         <%@ include file="footer.jsp" %>

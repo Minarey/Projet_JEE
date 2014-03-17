@@ -18,12 +18,21 @@ public class Articles {
     
     private static ArrayList<Article> articles = null;
     
-    public Articles()
+    private static Articles instance;
+    
+    private Articles()
     {
         articles = Factory.getArticleList();
     }
     
-    public static ArrayList<Article> getArticles()
+    public static Articles getInstance() 
+    {
+        if (instance == null)
+            instance = new Articles();
+        return instance;
+    }
+    
+    public ArrayList<Article> getArticles()
     {
         return articles;
     }
