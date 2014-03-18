@@ -16,15 +16,24 @@ import java.util.ArrayList;
  */
 public class Users {
     
-    private static ArrayList<User> users = null;
+    private ArrayList<User> articles = null;
     
-    public Users()
+    private static Users instance;
+    
+    private Users()
     {
-        users = Factory.getUserList();
+        articles = Factory.getUserList();
     }
     
-    public static ArrayList<User> getComments()
+    public static Users getInstance() 
     {
-        return users;
+        if (instance == null)
+            instance = new Users();
+        return instance;
+    }
+    
+    public ArrayList<User> getUsers()
+    {
+        return articles;
     }
 }

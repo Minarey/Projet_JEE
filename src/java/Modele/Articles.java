@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Articles {
     
-    private static ArrayList<Article> articles = null;
+    private ArrayList<Article> articles = null;
     
     private static Articles instance;
     
