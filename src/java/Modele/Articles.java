@@ -6,7 +6,7 @@
 
 package Modele;
 
-import ORM.Factory;
+import ORM.ArticleJpaController;
 import POJOs.Article;
 import java.util.ArrayList;
 
@@ -20,9 +20,11 @@ public class Articles {
     
     private static Articles instance;
     
+    private ArticleJpaController jpaController;
+    
     private Articles()
     {
-        articles = Factory.getArticleList();
+        articles = (ArrayList<Article>) jpaController.findArticleEntities();
     }
     
     public static Articles getInstance() 

@@ -6,7 +6,7 @@
 
 package Modele;
 
-import ORM.Factory;
+import ORM.CommentJpaController;
 import POJOs.Comment;
 import java.util.ArrayList;
 
@@ -19,6 +19,8 @@ public class Comments {
     private ArrayList<Comment> comments = null;
     
     private static Comments instance;
+    
+    private CommentJpaController jpaController;
     
     private Comments()
     {
@@ -33,6 +35,6 @@ public class Comments {
     
     public ArrayList<Comment> getComments(int articleID)
     {
-        return Factory.getCommentList(articleID);
+        return (ArrayList<Comment>) jpaController.findCommentEntities();
     }
 }
