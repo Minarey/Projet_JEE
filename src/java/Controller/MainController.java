@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author alainlesage
  */
 @WebServlet(urlPatterns = {""})
-public class FrontController extends HttpServlet {
+public class MainController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +36,13 @@ public class FrontController extends HttpServlet {
             try {
             StringBuilder articles = new StringBuilder();
             String menuVisitor = "<a href='login.jsp'>Log in</a>";
-            String menuMembre = "<a href='#'>Write an article</a><br/><a href='Logout'>Log out</a>";
+            String menuMembre = "<a href='newArticle.jsp'>Write an article</a><br/><a href='Logout'>Log out</a>";
            
             if (request.getSession().getAttribute("pseudo") != null)
             {
                request.setAttribute("menu", menuMembre);
             }
+            
             else
             {
                 request.setAttribute("menu", menuVisitor);
