@@ -9,6 +9,7 @@ package Modele;
 import ORM.ArticleJpaController;
 import POJOs.Article;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,15 +17,15 @@ import java.util.ArrayList;
  */
 public class Articles {
     
-    private ArrayList<Article> articles = null;
+    private List<Article> articles = null;
     
     private static Articles instance;
     
-    private ArticleJpaController jpaController;
+    private ArticleJpaController jpaController = new ArticleJpaController();
     
     private Articles()
     {
-        articles = (ArrayList<Article>) jpaController.findArticleEntities();
+        articles = jpaController.findArticleEntities();
     }
     
     public static Articles getInstance() 
@@ -34,7 +35,7 @@ public class Articles {
         return instance;
     }
     
-    public ArrayList<Article> getArticles()
+    public List<Article> getArticles()
     {
         return articles;
     }

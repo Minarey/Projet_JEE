@@ -9,10 +9,6 @@ package Controller;
 import POJOs.Article;
 import Modele.Articles;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,22 +33,25 @@ public class FrontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            Map<String, String> articles = new HashMap<String, String>();
-            
+            try {
+            StringBuilder affichage = new StringBuilder();
             int i = 1;
 
             request.setAttribute("variable", "coucou");
             
-            for (Article article : Articles.getInstance().getArticles())
+            for (Article article : Articles.getInstance().getArticles()) 
             {
-                articles.put( "article" + i , "Hello World ! <br/>");
+                affichage.append("article").append(i).append(article.getTitle()).append("<br/>");
             }
-            
-                        
-            request.setAttribute("articles", articles);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 
+                        
+            request.setAttribute("articles", affichage.toString());
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

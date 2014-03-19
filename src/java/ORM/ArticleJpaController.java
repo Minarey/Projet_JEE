@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.transaction.UserTransaction;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -29,11 +30,11 @@ import javax.transaction.UserTransaction;
  */
 public class ArticleJpaController implements Serializable {
 
-    public ArticleJpaController(EntityManagerFactory emf) {
-        this.utx = (UserTransaction) getEntityManager().getTransaction();
-        this.emf = emf;
+    public ArticleJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("Projet_JEEPU");
+        this.utx = getEntityManager().getTransaction();
     }
-    private UserTransaction utx = null;
+    private EntityTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
