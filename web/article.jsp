@@ -5,9 +5,6 @@
 --%>
 
 <div class="article">
-    <h2 class="title"> Le Titre de l'article en dur</h2>
-    <p class="content">
-        Le contenu de l'article, pour l'instant aussi en dur.
-    </p>
+    ${articles}
     <%@include file="commentaire.jsp" %>
 </div>

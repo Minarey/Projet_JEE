@@ -17,10 +17,6 @@
     <body>
         <%@ include file="header.jsp" %>
         <div>
-
-            ${affichage}
-            ${variable}
-
             <%@ include file="article.jsp" %>
         </div>
         <%@ include file="footer.jsp" %>

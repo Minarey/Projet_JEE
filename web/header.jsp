@@ -5,4 +5,7 @@
 --%>
 
 
-<header><h1>Blog Super Génial</h1></header>
+<header>
+    <h1>Blog Super Génial</h1>
+<!--    ${menu}    -->
+</header>
