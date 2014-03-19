@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Users {
     
-    private ArrayList<User> articles = null;
+    private ArrayList<User> users = null;
     
     private static Users instance;
     
@@ -25,7 +25,7 @@ public class Users {
     
     private Users()
     {
-        articles = (ArrayList<User>) jpaController.findUserEntities();
+        users = (ArrayList<User>) jpaController.findUserEntities();
     }
     
     public static Users getInstance() 
@@ -37,6 +37,6 @@ public class Users {
     
     public ArrayList<User> getUsers()
     {
-        return articles;
+        return users;
     }
 }

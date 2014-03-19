@@ -7,5 +7,5 @@
 
 <header>
     <h1>Blog Super Génial</h1>
-<!--    ${menu}    -->
+    ${menu}    
 </header>

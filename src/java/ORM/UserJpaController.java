@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.transaction.UserTransaction;
 
 /**
@@ -29,10 +31,10 @@ import javax.transaction.UserTransaction;
 public class UserJpaController implements Serializable {
 
     public UserJpaController(UserTransaction utx, EntityManagerFactory emf) {
-        this.utx = (UserTransaction) getEntityManager().getTransaction();;
-        this.emf = emf;
+        this.emf = Persistence.createEntityManagerFactory("Projet_JEEPU");
+        this.utx = getEntityManager().getTransaction();
     }
-    private UserTransaction utx = null;
+    private EntityTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

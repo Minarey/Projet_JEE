@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Erreur</h1>
-        <p>Une erreur est survenue, essayee de recharger la page. Si le problème persiste dites à l'administrateur de relancer le serveur GlassFish...</p>
+        <p>Une erreur est survenue, essayee de recharger la page. Certainement encore un bug avec persistence.xml... <br/>
+            Si le problème persiste dites à l'administrateur de relancer le serveur GlassFish...</p>
     </body>
 </html>
