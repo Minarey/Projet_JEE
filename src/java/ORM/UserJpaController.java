@@ -30,7 +30,7 @@ import javax.transaction.UserTransaction;
  */
 public class UserJpaController implements Serializable {
 
-    public UserJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public UserJpaController() {
         this.emf = Persistence.createEntityManagerFactory("Projet_JEEPU");
         this.utx = getEntityManager().getTransaction();
     }

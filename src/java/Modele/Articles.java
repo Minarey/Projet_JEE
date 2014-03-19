@@ -9,6 +9,7 @@ package Modele;
 import ORM.ArticleJpaController;
 import POJOs.Article;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public class Articles {
     private Articles()
     {
         articles = jpaController.findArticleEntities();
+        Collections.reverse(articles);
     }
     
     public static Articles getInstance() 

@@ -28,7 +28,7 @@ import javax.transaction.UserTransaction;
  */
 public class CommentJpaController implements Serializable {
 
-    public CommentJpaController(UserTransaction utx, EntityManagerFactory emf) {
+    public CommentJpaController() {
         this.emf = Persistence.createEntityManagerFactory("Projet_JEEPU");
         this.utx = getEntityManager().getTransaction();
     }

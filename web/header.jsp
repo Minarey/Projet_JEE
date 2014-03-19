@@ -6,6 +6,6 @@
 
 
 <header>
-    <h1>Blog Super Génial</h1>
+    <h1>Numeractu</h1>
     ${menu}    
 </header>

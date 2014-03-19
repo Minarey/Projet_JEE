@@ -7,9 +7,9 @@
 package Modele;
 
 import ORM.UserJpaController;
-import POJOs.Article;
 import POJOs.User;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,15 +17,15 @@ import java.util.ArrayList;
  */
 public class Users {
     
-    private ArrayList<User> users = null;
+    private List<User> users = null;
     
     private static Users instance;
     
-    private UserJpaController jpaController;
+    private UserJpaController jpaController = new UserJpaController();
     
     private Users()
     {
-        users = (ArrayList<User>) jpaController.findUserEntities();
+        users = jpaController.findUserEntities();
     }
     
     public static Users getInstance() 
@@ -35,7 +35,7 @@ public class Users {
         return instance;
     }
     
-    public ArrayList<User> getUsers()
+    public List<User> getUsers()
     {
         return users;
     }

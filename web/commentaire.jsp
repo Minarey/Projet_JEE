@@ -4,9 +4,9 @@
     Author     : alainlesage
 --%>
 
-<div class="comment">
+<!--<div class="comment">
     <h3>Commentaire posté par <span class="author">un auteur</span> le <span class="date">tel jour à telle heure</span></h3>
     <p class="content"> 
         Le contenu très pertinent du commentaire
     </p>
-</div>
+</div>-->

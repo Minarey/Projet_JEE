@@ -36,9 +36,9 @@ public class FrontController extends HttpServlet {
             try {
             StringBuilder articles = new StringBuilder();
             String menuVisitor = "<a href='login.jsp'>Log in</a>";
-            String menuMembre = "<a href='#'>Write an article</a><br/><a href='#'>Log out</a>";
+            String menuMembre = "<a href='#'>Write an article</a><br/><a href='Logout'>Log out</a>";
            
-            if (request.getSession().getAttribute("user") != null)
+            if (request.getSession().getAttribute("pseudo") != null)
             {
                request.setAttribute("menu", menuMembre);
             }

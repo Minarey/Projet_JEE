@@ -1,15 +1,11 @@
-package Controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-import Modele.Articles;
-import Modele.Users;
-import POJOs.Article;
-import POJOs.User;
+package Controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alainlesage
  */
-@WebServlet(urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,22 +32,8 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try{
-           for (User user : Users.getInstance().getUsers()) 
-            {
-                if (user.getPseudo().equals(request.getParameter("pseudo")) && user.getPassword().equals(request.getParameter("password")))
-                {
-                    request.getSession().setAttribute("pseudo", user.getPseudo());
-                }
-            }
-           getServletContext().getRequestDispatcher("").forward(request, response);
-        }
-        catch (Exception e)
-        {
-            getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
-            e.printStackTrace();
-        }
+        request.getSession().removeAttribute("pseudo");
+        getServletContext().getRequestDispatcher("").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
