@@ -34,27 +34,37 @@ public class FrontController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             try {
-            StringBuilder affichage = new StringBuilder();
-            int i = 1;
-
-            request.setAttribute("variable", "coucou");
+            StringBuilder articles = new StringBuilder();
+//            String menuVisitor = "<a href='login.jsp'>Log in</a>";
+//            String menuMembre = "<a href='#'>Write an article</a><br/><a href='#'>Log out</a>";
+            
+//            if (request.getSession().getAttribute("user") != null)
+//            {
+//                request.setAttribute("menu", menuMembre);
+//            }
+//            else
+//            {
+//                request.setAttribute("menu", menuVisitor);
+//            }
             
             for (Article article : Articles.getInstance().getArticles()) 
             {
-                affichage.append("article").append(i).append(article.getTitle()).append("<br/>");
+                articles.append("<h2>");
+                articles.append(article.getTitle()).append("<br/>");
+                articles.append("</h2>");
+                
+                articles.append("<p>");
+                articles.append(article.getContent()).append("<br/>");
+                articles.append("</p>");
             }
 
                         
-            request.setAttribute("affichage", affichage.toString());
+            request.setAttribute("articles", articles.toString());
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }
             catch (Exception e)
             {
-                StringBuilder affichage = new StringBuilder();
-                affichage.append(e.getMessage());
-                request.setAttribute("affichage", affichage.toString());
-                request.setAttribute("variable", "echec");
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
                 e.printStackTrace();
             }
     }
