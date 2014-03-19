@@ -19,6 +19,7 @@
         <div>
 
             ${affichage}
+            ${variable}
 
             <%@ include file="article.jsp" %>
         </div>

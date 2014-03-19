@@ -45,11 +45,16 @@ public class FrontController extends HttpServlet {
             }
 
                         
-            request.setAttribute("articles", affichage.toString());
+            request.setAttribute("affichage", affichage.toString());
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }
             catch (Exception e)
             {
+                StringBuilder affichage = new StringBuilder();
+                affichage.append(e.getMessage());
+                request.setAttribute("affichage", affichage.toString());
+                request.setAttribute("variable", "echec");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
                 e.printStackTrace();
             }
     }
