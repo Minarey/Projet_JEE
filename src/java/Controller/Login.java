@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
             {
                 if (user.getPseudo().equals(request.getParameter("pseudo")) && user.getPassword().equals(request.getParameter("password")))
                 {
-                    request.getSession().setAttribute("pseudo", user.getPseudo());
+                    request.getSession().setAttribute("pseudo", user.getUserID());
                 }
             }
            getServletContext().getRequestDispatcher("").forward(request, response);
